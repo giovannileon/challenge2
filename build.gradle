@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile 'org.apache.commons:commons-lang3:3.0'
+    compile group: 'org.apache.logging.log4j', name:'log4j-api', version: '2.5'
+    compile group: 'org.apache.logging.log4j', name:'log4j-core', version: '2.5'
+	compile group: 'org.testng', name:'testng', version: '6.9.10'
+	compile group: 'org.springframework', name:'spring-core', version: '4.2.4.RELEASE'
+	compile group: 'org.springframework', name:'spring-context', version: '4.2.5.RELEASE'
+	testCompile 'org.testng:testng:6.9.10'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
